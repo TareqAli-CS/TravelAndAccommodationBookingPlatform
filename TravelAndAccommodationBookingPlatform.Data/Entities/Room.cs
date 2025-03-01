@@ -16,5 +16,7 @@ namespace TravelAndAccommodationBookingPlatform.Data.Entities
         public int NumberOfRooms { get; set; }
         public Hotel Hotel { get; set; }
         public List<RoomImage> RoomImages { get; set; }
+        public List<Deal> Deals { get; set; }
+        public List<Booking> Bookings { get; set; }
     }
 }
