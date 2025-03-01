@@ -15,5 +15,6 @@
         public List<HotelImage> HotelImages { get; set; }
         public List<HotelAmenity> HotelAmenities { get; set; }
         public List<Review> Reviews { get; set; }
+        public List<Room> Rooms { get; set; }
     }
 }
