@@ -13,5 +13,7 @@
         public DateTime? ModifiedAt { get; set; }
         public City City { get; set; }
         public List<HotelImage> HotelImages { get; set; }
+        public List<HotelAmenity> HotelAmenities { get; set; }
+        public List<Review> Reviews { get; set; }
     }
 }
