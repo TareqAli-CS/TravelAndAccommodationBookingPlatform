@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TravelAndAccommodationBookingPlatform.Data.Entities
+﻿namespace TravelAndAccommodationBookingPlatform.Data.Entities
 {
     public class City
     {
@@ -15,5 +9,6 @@ namespace TravelAndAccommodationBookingPlatform.Data.Entities
         public DateTime CreatedAt { get; set; }
         public DateTime? ModifiedAt { get; set; }
         public string? ImageUrl { get; set; }
+        public List<Hotel> Hotels { get; set; }
     }
 }
