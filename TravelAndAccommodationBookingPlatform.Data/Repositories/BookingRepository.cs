@@ -1,4 +1,5 @@
-﻿using TravelAndAccommodationBookingPlatform.Data.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using TravelAndAccommodationBookingPlatform.Data.Entities;
 using TravelAndAccommodationBookingPlatform.Data.Repositories.Interfaces;
 
 namespace TravelAndAccommodationBookingPlatform.Data.Repositories
@@ -27,6 +28,18 @@ namespace TravelAndAccommodationBookingPlatform.Data.Repositories
             catch (Exception ex)
             {
                 throw new Exception("An error occurred while saving the booking: " + ex.Message);
+            }
+        }
+        public async Task<List<Booking>> GetBookingsForRoomAsync(int roomId)
+        {
+            try
+            {
+                return await _context.Bookings.Where(b => b.RoomId == roomId).ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while getting the bookings for the room: " + ex.Message);
+                
             }
         }
     }
