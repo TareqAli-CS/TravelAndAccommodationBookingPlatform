@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TravelAndAccommodationBookingPlatform.Data.Entities;
 
 namespace TravelAndAccommodationBookingPlatform.Data.Repositories.Interfaces
 {
-    internal interface IDealRepository
+    public interface IDealRepository
     {
+        Task AddAsync(Deal entity);
+        Task<Deal> GetDealByRoomAndDateAsync(int roomId, DateTime startDate, DateTime endDate);
     }
 }
