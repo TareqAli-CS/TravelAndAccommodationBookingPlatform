@@ -15,7 +15,7 @@ namespace TravelAndAccommodationBookingPlatform.Data.Config
                 .ValueGeneratedOnAdd();
 
             builder.Property(u => u.Username).IsRequired().HasMaxLength(255);
-            builder.Property(u => u.Password).IsRequired().HasMaxLength(255);
+            builder.Property(u => u.PasswordHash).IsRequired().HasMaxLength(255);
             builder.Property(u => u.Role).IsRequired().HasConversion<string>();
 
             builder.HasMany(u => u.Bookings)
