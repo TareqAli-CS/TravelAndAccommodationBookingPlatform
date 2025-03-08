@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -15,25 +16,51 @@ namespace TravelAndAccommodationBookingPlatform.API.Controllers
     public class AuthenticationController : ControllerBase
     {
         private readonly IUserService _userService;
+        private readonly IValidator<RegisterUserDto> _registerUserValidator;
         private readonly IConfiguration _configuration;
 
-        public AuthenticationController(IUserService userService, IConfiguration configuration)
+        public AuthenticationController(IUserService userService, IConfiguration configuration, IValidator<RegisterUserDto> registerUserValidator)
         {
             _userService = userService;
             _configuration = configuration;
+            _registerUserValidator = registerUserValidator;
         }
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginRequestDto request)
+        public async Task<IActionResult> Login([FromBody] LoginRequestDto request)
         {
-            if (_userService.ValidateUserCredentials(request.Username, request.Password))
+            if (await _userService.ValidateUserCredentialsAsync(request.Username, request.Password))
             {
-                var user = _userService.GetUserByUsername(request.Username);
+                var user = await _userService.GetUserByUsernameAsync(request.Username);
                 var token = GenerateJwtToken(user);
                 return Ok(new { Token = token });
             }
             else
             {
                 return Unauthorized(new { Message = "Invalid username or password." });
+            }
+        }
+
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterUserDto request)
+        {
+            var validationResult = await _registerUserValidator.ValidateAsync(request);
+            if (!validationResult.IsValid)
+            {
+                return BadRequest(new { Errors = validationResult.Errors.Select(e => e.ErrorMessage) });
+            }
+            try
+            {
+                var newUser = await _userService.RegisterUserAsync(request);
+                var token = GenerateJwtToken(newUser);
+                return Ok(new { Token = token });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred during registration." });
             }
         }
 
