@@ -1,4 +1,7 @@
 
+using Microsoft.EntityFrameworkCore;
+using TravelAndAccommodationBookingPlatform.Data;
+
 namespace TravelAndAccommodationBookingPlatform.API
 {
     public class Program
@@ -6,6 +9,9 @@ namespace TravelAndAccommodationBookingPlatform.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            builder.Services.AddDbContext<TravelAndAccommodationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // Add services to the container.
 
