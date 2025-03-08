@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TravelAndAccommodationBookingPlatform.Application.Dtos
 {
-    public class BookingDTO
+    public class BookingDto
     {
         public int UserId { get; set; }
         public int RoomId { get; set; }
