@@ -79,7 +79,7 @@ namespace TravelAndAccommodationBookingPlatform.API.Controllers
         }
 
         [HttpGet("filter")]
-        [Authorize(Roles = "RegularUser")]
+        [Authorize(Roles = "NormalUser")]
         public async Task<IActionResult> FilterHotelsAsync([FromQuery] HotelFilterDto filterBody)
         {
             var filteredHotels = await _hotelService.FilterHotelsAsync(filterBody);
@@ -87,7 +87,7 @@ namespace TravelAndAccommodationBookingPlatform.API.Controllers
         }
 
         [HttpGet("deals")]
-        [Authorize(Roles = "RegularUser")]
+        [Authorize(Roles = "NormalUser")]
         public async Task<IActionResult> GetHotelsWithAvailableDealsAsync()
         {
             var hotelsWithDealsDto = await _hotelService.GetHotelsWithAvailableDealsAsync();
@@ -95,7 +95,7 @@ namespace TravelAndAccommodationBookingPlatform.API.Controllers
         }
 
         [HttpGet("recently-visited-hotels/{userId}")]
-        [Authorize(Roles = "RegularUser")]
+        [Authorize(Roles = "NormalUser")]
         public async Task<IActionResult> GetVisitedHotelsByUserAsync(int userId)
         {
             var visitedHotels = await _hotelService.GetVisitedHotelsByUserAsync(userId);
