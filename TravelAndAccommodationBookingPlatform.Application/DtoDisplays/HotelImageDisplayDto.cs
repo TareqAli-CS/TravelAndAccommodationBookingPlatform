@@ -8,7 +8,7 @@ namespace TravelAndAccommodationBookingPlatform.Application.DtoDisplays
 {
     public class HotelImageDisplayDto
     {
-        public int Id { get; set; }
+        public int ImageId { get; set; }
         public string ImageUrl { get; set; }
     }
 }

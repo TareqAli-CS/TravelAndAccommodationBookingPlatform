@@ -8,7 +8,7 @@ namespace TravelAndAccommodationBookingPlatform.Application.DtoDisplays
 {
     public class HotelDisplayDto
     {
-        public int Id { get; set; }
+        public int HotelId { get; set; }
         public string Name { get; set; }
         public int StarRating { get; set; }
         public string Owner { get; set; }

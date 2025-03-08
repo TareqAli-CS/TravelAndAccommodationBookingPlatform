@@ -119,6 +119,11 @@ namespace TravelAndAccommodationBookingPlatform.Application.Services
             try
             {
                 var trendingCities = await _cityRepository.GetTrendingDestinationsAsync();
+                if (!trendingCities.Any())
+                {
+                    _logger.LogWarning("No trending cities found.");
+                    return new List<CityDisplayDto>(); 
+                }
                 var trendingCityDtos = _mapper.Map<List<CityDisplayDto>>(trendingCities);
 
                 return trendingCityDtos;
