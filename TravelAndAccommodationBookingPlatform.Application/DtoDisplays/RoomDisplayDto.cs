@@ -10,7 +10,7 @@ namespace TravelAndAccommodationBookingPlatform.Application.DtoDisplays
 {
     public class RoomDisplayDto
     {
-        public int Id { get; set; }
+        public int RoomId { get; set; }
         public int AdultCapacity { get; set; }
         public int ChildCapacity { get; set; }
         public decimal DailyPrice { get; set; }
@@ -22,6 +22,7 @@ namespace TravelAndAccommodationBookingPlatform.Application.DtoDisplays
         public int NumberOfRooms { get; set; }
         public List<RoomImageDisplayDto> RoomImages { get; set; } = new List<RoomImageDisplayDto>();
         public List<DealDto> Deals { get; set; } = new List<DealDto>();
+        public List<BookingDisplayDto> Bookings { get; set; } = new List<BookingDisplayDto>();
 
     }
 }

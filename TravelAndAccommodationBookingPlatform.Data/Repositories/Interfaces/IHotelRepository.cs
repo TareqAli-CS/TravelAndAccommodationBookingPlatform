@@ -4,7 +4,7 @@ namespace TravelAndAccommodationBookingPlatform.Data.Repositories.Interfaces
 {
     public interface IHotelRepository
     {
-        Task<List<Hotel>> GetAllAsync();
+        Task<List<Hotel>> GetAllAsync(int page, int pageSize);
         Task<Hotel> GetByIdAsync(int id);
         Task AddAsync(Hotel entity);
         Task UpdateAsync(Hotel entity);

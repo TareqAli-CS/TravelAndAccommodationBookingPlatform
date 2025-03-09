@@ -55,6 +55,7 @@ namespace TravelAndAccommodationBookingPlatform.Data.Repositories
             {
                 var room = await _context.Rooms
                     .Include(r => r.Deals)
+                    .Include(r => r.Bookings)
                     .FirstOrDefaultAsync(r => r.RoomId == id);
 
                 if (room != null)

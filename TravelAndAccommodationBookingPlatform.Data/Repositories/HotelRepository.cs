@@ -41,9 +41,12 @@ namespace TravelAndAccommodationBookingPlatform.Data.Repositories
             }
         }
 
-        public async Task<List<Hotel>> GetAllAsync()
+        public async Task<List<Hotel>> GetAllAsync(int page, int pageSize)
         {
-            return await _context.Hotels.ToListAsync();
+            return await _context.Hotels
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
         }
 
         public async Task<List<Hotel>> GetAllHotelsWithDetailsAsync()

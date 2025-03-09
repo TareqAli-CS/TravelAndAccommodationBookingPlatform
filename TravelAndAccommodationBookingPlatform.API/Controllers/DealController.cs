@@ -17,11 +17,23 @@ namespace TravelAndAccommodationBookingPlatform.API.Controllers
         {
             _dealService = dealService;
         }
-        [HttpPost("create")]
+        [HttpPost]
         public async Task<IActionResult> CreateDealAsync([FromBody] DealDto dealDto)
         {
-            await _dealService.CreateDealAsync(dealDto);
-            return Ok("Deal created successfully");
+            try
+            {
+                await _dealService.CreateDealAsync(dealDto);
+                return Ok("Deal created successfully");
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { Message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "An error occurred while creating the deal." });
+            }
         }
+
     }
 }

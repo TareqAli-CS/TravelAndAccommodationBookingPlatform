@@ -14,7 +14,9 @@ namespace TravelAndAccommodationBookingPlatform.Application.Profiles
     {
         public RoomProfile()
         {
-            CreateMap<Room, RoomDisplayDto>().ReverseMap();
+            CreateMap<Room, RoomDisplayDto>()
+               .ForMember(dest => dest.Deals, opt => opt.MapFrom(src => src.Deals))
+               .ReverseMap();
             CreateMap<Room, RoomDto>().ReverseMap();
         }
     }

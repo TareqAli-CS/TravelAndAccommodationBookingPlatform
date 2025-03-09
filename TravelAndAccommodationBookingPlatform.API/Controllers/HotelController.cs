@@ -19,9 +19,9 @@ namespace TravelAndAccommodationBookingPlatform.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllHotelsAsync()
+        public async Task<IActionResult> GetAllHotelsAsync([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
-            var hotelsDto = await _hotelService.GetAllHotelsAsync();
+            var hotelsDto = await _hotelService.GetAllHotelsAsync(page, pageSize);
             return Ok(hotelsDto);
         }
 

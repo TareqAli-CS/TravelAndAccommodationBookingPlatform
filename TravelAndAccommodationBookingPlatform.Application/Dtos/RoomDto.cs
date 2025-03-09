@@ -9,6 +9,7 @@ namespace TravelAndAccommodationBookingPlatform.Application.Dtos
 {
     public class RoomDto
     {
+        public int RoomId { get; set; }
         public int AdultCapacity { get; set; }
         public int ChildCapacity { get; set; }
         public decimal DailyPrice { get; set; }

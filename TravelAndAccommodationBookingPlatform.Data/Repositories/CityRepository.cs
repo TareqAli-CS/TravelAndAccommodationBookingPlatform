@@ -70,7 +70,7 @@ namespace TravelAndAccommodationBookingPlatform.Data.Repositories
                    .Where(booking => booking.Room.Hotel != null)
                    .GroupBy(booking => booking.Room.Hotel.CityId)
                    .OrderByDescending(group => group.Count())
-                   .Take(3)
+                   .Take(5)
                    .Select(group => group.Key)
                    .ToListAsync();
 

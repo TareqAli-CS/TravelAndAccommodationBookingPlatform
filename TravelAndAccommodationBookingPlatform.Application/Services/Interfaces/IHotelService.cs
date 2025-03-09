@@ -10,7 +10,7 @@ namespace TravelAndAccommodationBookingPlatform.Application.Services.Interfaces
 {
     public interface IHotelService
     {
-        Task<List<HotelDisplayDto>> GetAllHotelsAsync();
+        Task<List<HotelDisplayDto>> GetAllHotelsAsync(int page, int pageSize);
         Task<HotelDisplayDto> GetHotelByIdAsync(int id);
         Task AddHotelAsync(HotelDto hotelDto);
         Task<bool> UpdateHotelAsync(int id, HotelDto hotelDto);

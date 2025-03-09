@@ -26,11 +26,11 @@ namespace TravelAndAccommodationBookingPlatform.Application.Services
             _logger = logger;
         }
 
-        public async Task<List<HotelDisplayDto>> GetAllHotelsAsync()
+        public async Task<List<HotelDisplayDto>> GetAllHotelsAsync(int page, int pageSize)
         {
             try
             {
-                var hotels = await _hotelRepository.GetAllAsync();
+                var hotels = await _hotelRepository.GetAllAsync(page, pageSize);
                 return _mapper.Map<List<HotelDisplayDto>>(hotels);
             }
             catch (Exception ex)
