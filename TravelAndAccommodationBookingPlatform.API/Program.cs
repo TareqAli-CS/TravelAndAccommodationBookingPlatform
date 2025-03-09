@@ -1,21 +1,19 @@
 
+using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
-using TravelAndAccommodationBookingPlatform.Application.Profiles;
-using TravelAndAccommodationBookingPlatform.Application.Services.Interfaces;
-using TravelAndAccommodationBookingPlatform.Application.Services;
-using TravelAndAccommodationBookingPlatform.Data;
-using TravelAndAccommodationBookingPlatform.Data.Repositories.Interfaces;
-using TravelAndAccommodationBookingPlatform.Data.Repositories;
-using FluentValidation;
-using Microsoft.AspNetCore.Identity.Data;
 using TravelAndAccommodationBookingPlatform.Application.Dtos;
+using TravelAndAccommodationBookingPlatform.Application.Profiles;
+using TravelAndAccommodationBookingPlatform.Application.Services;
+using TravelAndAccommodationBookingPlatform.Application.Services.Interfaces;
 using TravelAndAccommodationBookingPlatform.Application.Validators;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using TravelAndAccommodationBookingPlatform.Data;
+using TravelAndAccommodationBookingPlatform.Data.Repositories;
+using TravelAndAccommodationBookingPlatform.Data.Repositories.Interfaces;
 
 namespace TravelAndAccommodationBookingPlatform.API
 {

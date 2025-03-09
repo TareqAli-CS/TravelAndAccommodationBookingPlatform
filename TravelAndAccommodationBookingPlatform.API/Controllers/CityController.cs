@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TravelAndAccommodationBookingPlatform.Application.Dtos;
 using TravelAndAccommodationBookingPlatform.Application.Services.Interfaces;
