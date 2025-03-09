@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TravelAndAccommodationBookingPlatform.Application.DtoDisplays;
 using TravelAndAccommodationBookingPlatform.Application.Dtos;
 using TravelAndAccommodationBookingPlatform.Application.Services.Interfaces;
 using TravelAndAccommodationBookingPlatform.Data.Entities;
@@ -109,5 +110,20 @@ namespace TravelAndAccommodationBookingPlatform.Application.Services
         {
             return start1 <= end2 && end1 >= start2;
         }
+        public async Task<List<BookingDisplayDto>> GetBookingsByUserAsync(int userId, int page, int pageSize)
+        {
+            var bookings = await _bookingRepository.GetBookingsByUserIdAsync(userId, page, pageSize);
+            return _mapper.Map<List<BookingDisplayDto>>(bookings);
+        }
+        public async Task<bool> DeleteBookingAsync(int bookingId)
+        {
+            return await _bookingRepository.DeleteAsync(bookingId);
+        }
+        public async Task<BookingDto?> GetBookingByIdAsync(int bookingId)
+        {
+            var booking = await _bookingRepository.GetByIdAsync(bookingId);
+            return booking != null ? _mapper.Map<BookingDto>(booking) : null;
+        }
+
     }
 }

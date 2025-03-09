@@ -42,5 +42,30 @@ namespace TravelAndAccommodationBookingPlatform.Data.Repositories
                 
             }
         }
+        public async Task<List<Booking>> GetBookingsByUserIdAsync(int userId, int page, int pageSize)
+        {
+            return await _context.Bookings
+                .Where(b => b.UserId == userId)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+        }
+        public async Task<bool> DeleteAsync(int bookingId)
+        {
+            var booking = await _context.Bookings.FindAsync(bookingId);
+            if (booking == null)
+            {
+                return false; // Booking not found
+            }
+
+            _context.Bookings.Remove(booking);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+        public async Task<Booking?> GetByIdAsync(int bookingId)
+        {
+            return await _context.Bookings.FindAsync(bookingId);
+        }
+
     }
 }

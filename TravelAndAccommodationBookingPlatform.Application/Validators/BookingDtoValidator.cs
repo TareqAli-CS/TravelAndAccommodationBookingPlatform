@@ -12,7 +12,6 @@ namespace TravelAndAccommodationBookingPlatform.Application.Validators
     {
         public BookingDtoValidator()
         {
-            RuleFor(dto => dto.UserId).GreaterThan(0).WithMessage("UserId must be greater than 0.");
             RuleFor(dto => dto.RoomId).GreaterThan(0).WithMessage("RoomId must be greater than 0.");
             RuleFor(dto => dto.CheckInDate).NotEmpty().WithMessage("CheckInDate is required.");
             RuleFor(dto => dto.CheckOutDate).NotEmpty().WithMessage("CheckOutDate is required.")
